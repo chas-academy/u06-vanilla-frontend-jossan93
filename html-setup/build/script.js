@@ -9,8 +9,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 window.addEventListener("DOMContentLoaded", () => {
-    var _a;
-    (_a = document.getElementById("booklist")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", fetchAll);
+    var _a, _b;
+    (_a = document.getElementById("booklistBtn")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", fetchAll);
+    (_b = document.querySelector("form")) === null || _b === void 0 ? void 0 : _b.addEventListener("submit", addBook);
 });
 function fetchAll() {
     return __awaiter(this, void 0, void 0, function* () {
@@ -25,7 +26,7 @@ function fetchAll() {
             renderBooks(books);
         }
         catch (error) {
-            console.error("Det har blivit error", error);
+            console.error("Something gone wrong", error);
         }
     });
 }
@@ -43,5 +44,42 @@ function renderBooks(books) {
       <strong>Summary:</strong> ${book.Summary}
     `;
         list.appendChild(li);
+    });
+}
+function addBook(event) {
+    return __awaiter(this, void 0, void 0, function* () {
+        var _a, _b, _c, _d, _e;
+        event.preventDefault(); // Stoppar sidans omladdning
+        const add_url = "https://u05-restful-api-jossan93.onrender.com/api/books/createBook";
+        const newBook = {
+            Title: ((_a = document.getElementById("addTitle")) === null || _a === void 0 ? void 0 : _a.value) || "",
+            Author: ((_b = document.getElementById("addAuthor")) === null || _b === void 0 ? void 0 : _b.value) || "",
+            ISBN: ((_c = document.getElementById("addISBN")) === null || _c === void 0 ? void 0 : _c.value) || "",
+            Summary: ((_d = document.getElementById("addSummary")) === null || _d === void 0 ? void 0 : _d.value) || ""
+        };
+        try {
+            const response = yield fetch(add_url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(newBook)
+            });
+            if (response.ok) {
+                const data = yield response.json();
+                console.log("Book has been added:", data);
+                //alert("Book has been added!");
+                fetchAll();
+                (_e = document.querySelector("form")) === null || _e === void 0 ? void 0 : _e.reset(); // tömmer formuläret
+            }
+            else {
+                console.error("Something went wrong:", response.statusText);
+                alert("Error adding book");
+            }
+        }
+        catch (error) {
+            console.error("Error:", error);
+            alert("Connection error.");
+        }
     });
 }

@@ -9,9 +9,23 @@
 <body>
     <h1>Welcome to book list</h1>
     <div>
-        <button id="booklist" type="button">Get all the books</button>
-
+        <button id="booklistBtn" type="button">Get all the books</button>
         <ul id="bookList"></ul>
+    </div>
+
+    <div>
+        <h2>Add a book to the book list</h2>
+        <form>
+            <label for="Title">Title</label><br>
+            <input type="text" id="addTitle" name="addTitle"><br>
+            <label for="Author">Author</label><br>
+            <input type="text" id="addAuthor" name="addAuthor"><br>
+            <label for="ISBN">ISBN</label><br>
+            <input type="text" id="addISBN" name="addISBN"><br>
+            <label for="Summary">Summary</label><br>
+            <input type="text" id="addSummary" name="addSummary"><br>
+            <button type="submit">Add a book!</button>
+        </form>
     </div>
 </body>
 </html>
