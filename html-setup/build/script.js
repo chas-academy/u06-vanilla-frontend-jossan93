@@ -9,10 +9,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 window.addEventListener("DOMContentLoaded", () => {
-    var _a, _b, _c;
+    var _a, _b, _c, _d;
     (_a = document.getElementById("booklistBtn")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", fetchAll);
     (_b = document.querySelector("form")) === null || _b === void 0 ? void 0 : _b.addEventListener("submit", addBook);
     (_c = document.getElementById("updateForm")) === null || _c === void 0 ? void 0 : _c.addEventListener("submit", updatebook);
+    (_d = document.getElementById("deleteForm")) === null || _d === void 0 ? void 0 : _d.addEventListener("submit", deletebook);
 });
 function fetchAll() {
     return __awaiter(this, void 0, void 0, function* () {
@@ -54,10 +55,10 @@ function addBook(event) {
         event.preventDefault(); // Stoppar sidans omladdning
         const add_url = "https://u05-restful-api-jossan93.onrender.com/api/books/createBook";
         const newBook = {
-            Title: ((_a = document.getElementById("addTitle")) === null || _a === void 0 ? void 0 : _a.value) || "",
-            Author: ((_b = document.getElementById("addAuthor")) === null || _b === void 0 ? void 0 : _b.value) || "",
-            ISBN: ((_c = document.getElementById("addISBN")) === null || _c === void 0 ? void 0 : _c.value) || "",
-            Summary: ((_d = document.getElementById("addSummary")) === null || _d === void 0 ? void 0 : _d.value) || ""
+            Title: ((_a = document.getElementById("addTitle")) === null || _a === void 0 ? void 0 : _a.value.trim()) || "",
+            Author: ((_b = document.getElementById("addAuthor")) === null || _b === void 0 ? void 0 : _b.value.trim()) || "",
+            ISBN: Number((_c = document.getElementById("addISBN")) === null || _c === void 0 ? void 0 : _c.value.trim()),
+            Summary: ((_d = document.getElementById("addSummary")) === null || _d === void 0 ? void 0 : _d.value.trim()) || ""
         };
         try {
             const response = yield fetch(add_url, {
@@ -122,6 +123,24 @@ function updatebook(event) {
         catch (error) {
             console.error("Error updating book:", error);
             alert("Error connecting to server.");
+        }
+    });
+}
+function deletebook(event) {
+    return __awaiter(this, void 0, void 0, function* () {
+        event.preventDefault();
+        const id = document.getElementById("deleteID").value.trim();
+        try {
+            const res = yield fetch(`https://u05-restful-api-jossan93.onrender.com/api/books/delete/${id}`, {
+                method: "DELETE"
+            });
+            if (res.ok) {
+                document.getElementById("deleteForm").reset();
+                fetchAll();
+            }
+        }
+        catch (err) {
+            console.error("Delete failed:", err);
         }
     });
 }

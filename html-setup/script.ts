@@ -2,6 +2,7 @@ window.addEventListener("DOMContentLoaded", () => {
     document.getElementById("booklistBtn")?.addEventListener("click", fetchAll);
     document.querySelector("form")?.addEventListener("submit", addBook);
     document.getElementById("updateForm")?.addEventListener("submit", updatebook);
+    document.getElementById("deleteForm")?.addEventListener("submit", deletebook);
   });  
 
 async function fetchAll() {
@@ -43,11 +44,12 @@ async function addBook(event: Event) {
     const add_url = "https://u05-restful-api-jossan93.onrender.com/api/books/createBook";
 
     const newBook = {
-        Title: (document.getElementById("addTitle") as HTMLInputElement)?.value || "",
-        Author: (document.getElementById("addAuthor") as HTMLInputElement)?.value || "",
-        ISBN: (document.getElementById("addISBN") as HTMLInputElement)?.value || "",
-        Summary: (document.getElementById("addSummary") as HTMLInputElement)?.value || ""
-    };
+        Title: (document.getElementById("addTitle") as HTMLInputElement)?.value.trim() || "",
+        Author: (document.getElementById("addAuthor") as HTMLInputElement)?.value.trim() || "",
+        ISBN: Number((document.getElementById("addISBN") as HTMLInputElement)?.value.trim()),
+        Summary: (document.getElementById("addSummary") as HTMLInputElement)?.value.trim() || ""
+      };
+      
 
     try {
         const response = await fetch(add_url, {
@@ -114,3 +116,23 @@ async function updatebook(event: Event) {
         alert("Error connecting to server.");
     }
 }
+
+async function deletebook(event:Event) {
+    event.preventDefault();
+
+    const id = (document.getElementById("deleteID") as HTMLInputElement).value.trim();
+
+    try {
+        const res = await fetch(`https://u05-restful-api-jossan93.onrender.com/api/books/delete/${id}`, {
+          method: "DELETE"
+        });
+    
+        if (res.ok) {
+          (document.getElementById("deleteForm") as HTMLFormElement).reset();
+          fetchAll();
+        }
+      } catch (err) {
+        console.error("Delete failed:", err);
+      }
+    }
+
