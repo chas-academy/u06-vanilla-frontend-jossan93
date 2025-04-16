@@ -5,54 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Books</title>
     <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Welcome to book list</h1>
-    <div>
+    <div class="container">
+    <section id="bookListSection">
+        <h1>Welcome to book list</h1>
         <button id="booklistBtn" type="button">Get all the books</button>
         <ul id="bookList"></ul>
-    </div>
+    </section>
 
-    <div>
+    <section id="addSection">
         <h2>Add a book to the book list</h2>
         <form>
-            <label for="Title">Title</label><br>
-            <input type="text" id="addTitle" name="addTitle"><br>
-            <label for="Author">Author</label><br>
-            <input type="text" id="addAuthor" name="addAuthor"><br>
-            <label for="ISBN">ISBN</label><br>
-            <input type="text" id="addISBN" name="addISBN"><br>
-            <label for="Summary">Summary</label><br>
-            <input type="text" id="addSummary" name="addSummary"><br>
+            <label for="Title">Title</label>
+            <input type="text" id="addTitle" name="addTitle">
+            <label for="Author">Author</label>
+            <input type="text" id="addAuthor" name="addAuthor">
+            <label for="ISBN">ISBN</label>
+            <input type="text" id="addISBN" name="addISBN">
+            <label for="Summary">Summary</label>
+            <input type="text" id="addSummary" name="addSummary">
             <button type="submit">Add a book!</button>
         </form>
-    </div>
+    </section>
 
-    <div>
+    <section id="updateSection">
         <h2>Update a book</h2>
         <form id="updateForm">
-            <label for="id">ID</label><br>
-            <input type="text" id="updateID" name="updateID" required><br>
-            <label for="Title">Title</label><br>
-            <input type="text" id="updateTitle" name="updateTitle"><br>
-            <label for="Author">Author</label><br>
-            <input type="text" id="updateAuthor" name="updateAuthor"><br>
-            <label for="ISBN">ISBN</label><br>
-            <input type="text" id="updateISBN" name="updateISBN"><br>
-            <label for="Summary">Summary</label><br>
-            <input type="text" id="updateSummary" name="updateSummary"><br>
+            <label for="id">ID</label>
+            <input type="text" id="updateID" name="updateID" required>
+            <label for="Title">Title</label>
+            <input type="text" id="updateTitle" name="updateTitle">
+            <label for="Author">Author</label>
+            <input type="text" id="updateAuthor" name="updateAuthor">
+            <label for="ISBN">ISBN</label>
+            <input type="text" id="updateISBN" name="updateISBN">
+            <label for="Summary">Summary</label>
+            <input type="text" id="updateSummary" name="updateSummary">
             <button type="submit">Update book</button>
         </form>
-    </div>
+    </section>
 
-    <div>
+    <section id="deleteSection">
         <h2>Delete a book</h2>
         <form id="deleteForm">
-            <label for="id">ID</label><br>
-            <input type="text" id="deleteID" name="deleteID" required><br>
+            <label for="id">ID</label>
+            <input type="text" id="deleteID" name="deleteID" required>
             <button type="submit">Delete book</button>
         </form>
+    </section>
     </div>
-
 </body>
 </html>

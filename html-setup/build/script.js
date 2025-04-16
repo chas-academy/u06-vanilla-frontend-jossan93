@@ -40,11 +40,16 @@ function renderBooks(books) {
     books.forEach(book => {
         const li = document.createElement("li");
         li.innerHTML = `
-      <strong>ID:</strong> ${book._id}<br>
-      <strong>Title:</strong> ${book.Title}<br>
-      <strong>Author:</strong> ${book.Author}<br>
-      <strong>ISBN:</strong> ${book.ISBN}<br>
-      <strong>Summary:</strong> ${book.Summary}
+    <div><strong>ID:</strong></div>
+    <div>${book._id}</div>
+    <div><strong>Title:</strong></div>
+    <div>${book.Title}</div>
+    <div><strong>Author:</strong></div>
+    <div>${book.Author}</div>
+    <div><strong>ISBN:</strong></div>
+    <div>${book.ISBN}</div>
+    <div><strong>Summary:</strong></div>
+    <div>${book.Summary}</div>
     `;
         list.appendChild(li);
     });

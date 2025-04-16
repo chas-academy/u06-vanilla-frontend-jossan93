@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  
+  body {
+    background-image: url('https://cdn.pixabay.com/photo/2017/11/08/11/25/books-378903_960_720.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+  }
+  
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    width: 100%;
+    max-width: 800px;
+    gap: 2rem; 
+  }
+  
+  section {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 1.5rem;
+    border-radius: 8px;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  ul {
+    padding: 0;
+    text-align: center;
+    width: 100%;
+  }
+  
+  li {
+    list-style: none;
+    margin: 1rem auto;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+    max-width: 500px;
+    text-align: center;
+  }
+  
+  /* Varje rad i boken */
+  li div {
+    margin-bottom: 0.5rem;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  input, button {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+
+  input {
+    background-color: rgb(185, 182, 201);
+  }
+  
+  button {
+    padding-top: 0.5rem;
+    cursor: pointer;
+    background-color: #301769;
+    color: white;
+    border: none;
+  }
+  
+  h2 {
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    body {
+      padding: 1rem;
+    }
+  
+    section {
+      padding: 1rem;
+    }
+  }
+  
