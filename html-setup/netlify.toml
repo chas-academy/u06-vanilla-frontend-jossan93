@@ -1,6 +1,7 @@
 [build]
-  publish = "build"
-  command = ""
+  base = "html-setup"    # Denna mapp innehåller package.json och din kod
+  command = "npm run build"
+  publish = "html-setup/build"    # Den mapp som innehåller index.html, script.js och style.css
 
 [[redirects]]
   from = "/*"
