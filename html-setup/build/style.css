@@ -6,8 +6,11 @@
   }
   
   body {
-    background-color: rgb(37, 37, 37);
-    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin: 0;
+    background-color: rgb(65, 60, 77);
   }
   
   .container {
@@ -17,19 +20,21 @@
     width: 100%;
     max-width: 800px;
     gap: 2rem; 
+    margin: 1rem;
   }
   
   section {
     background: rgba(255, 255, 255, 0.8);
     padding: 1.5rem;
     border-radius: 8px;
-    width: 100%;
+    width: 80%;
+    max-width: 800px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-
+  
   ul {
     padding: 0;
     text-align: center;

@@ -119,7 +119,7 @@ function addBook(event) {
                 console.log("Book has been added:", data);
                 //alert("Book has been added!");
                 fetchAll();
-                (_e = document.querySelector("addbookForm")) === null || _e === void 0 ? void 0 : _e.reset(); // tömmer formuläret
+                (_e = document.getElementById("addbookForm")) === null || _e === void 0 ? void 0 : _e.reset();
             }
             else {
                 console.error("Something went wrong:", response.statusText);
