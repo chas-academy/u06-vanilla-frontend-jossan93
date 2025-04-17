@@ -11,7 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 window.addEventListener("DOMContentLoaded", () => {
     var _a, _b, _c, _d, _e;
     (_a = document.getElementById("booklistBtn")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", fetchAll);
-    (_b = document.querySelector("addbookForm")) === null || _b === void 0 ? void 0 : _b.addEventListener("submit", addBook);
+    (_b = document.getElementById("addbookForm")) === null || _b === void 0 ? void 0 : _b.addEventListener("submit", addBook);
     (_c = document.getElementById("updateForm")) === null || _c === void 0 ? void 0 : _c.addEventListener("submit", updatebook);
     (_d = document.getElementById("deleteForm")) === null || _d === void 0 ? void 0 : _d.addEventListener("submit", deletebook);
     (_e = document.getElementById("getbookidForm")) === null || _e === void 0 ? void 0 : _e.addEventListener("submit", getbookbyid);

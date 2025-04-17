@@ -1,6 +1,6 @@
 window.addEventListener("DOMContentLoaded", () => {
     document.getElementById("booklistBtn")?.addEventListener("click", fetchAll);
-    document.querySelector("addbookForm")?.addEventListener("submit", addBook);
+    document.getElementById("addbookForm")?.addEventListener("submit", addBook);
     document.getElementById("updateForm")?.addEventListener("submit", updatebook);
     document.getElementById("deleteForm")?.addEventListener("submit", deletebook);
     document.getElementById("getbookidForm")?.addEventListener("submit", getbookbyid);
@@ -111,7 +111,7 @@ async function addBook(event: Event) {
             console.log("Book has been added:", data);
             //alert("Book has been added!");
             fetchAll();
-            document.querySelector("addbookForm")?.reset(); // tömmer formuläret
+            (document.getElementById("addbookForm") as HTMLFormElement)?.reset();
         } else {
             console.error("Something went wrong:", response.statusText);
             alert("Error adding book");
