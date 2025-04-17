@@ -9,11 +9,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 window.addEventListener("DOMContentLoaded", () => {
-    var _a, _b, _c, _d;
+    var _a, _b, _c, _d, _e;
     (_a = document.getElementById("booklistBtn")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", fetchAll);
-    (_b = document.querySelector("form")) === null || _b === void 0 ? void 0 : _b.addEventListener("submit", addBook);
+    (_b = document.querySelector("addbookForm")) === null || _b === void 0 ? void 0 : _b.addEventListener("submit", addBook);
     (_c = document.getElementById("updateForm")) === null || _c === void 0 ? void 0 : _c.addEventListener("submit", updatebook);
     (_d = document.getElementById("deleteForm")) === null || _d === void 0 ? void 0 : _d.addEventListener("submit", deletebook);
+    (_e = document.getElementById("getbookidForm")) === null || _e === void 0 ? void 0 : _e.addEventListener("submit", getbookbyid);
 });
 function fetchAll() {
     return __awaiter(this, void 0, void 0, function* () {
@@ -54,6 +55,46 @@ function renderBooks(books) {
         list.appendChild(li);
     });
 }
+function getbookbyid(event) {
+    return __awaiter(this, void 0, void 0, function* () {
+        event.preventDefault();
+        const id = document.getElementById("getbookByID").value;
+        const getbookid_url = `https://u05-restful-api-jossan93.onrender.com/api/books/${id}`;
+        console.log("Fetching book with ID:", id);
+        try {
+            // Skicka GET-begäran till API:t
+            const response = yield fetch(getbookid_url);
+            // Kontrollera om svar från API är okej
+            if (response.ok) {
+                // Läs data som bok
+                const book = yield response.json();
+                console.log("Book fetched:", book); // Logga den hämtade boken
+                // Visa bokdetaljer på sidan
+                const bookDetails = document.getElementById("bookDetails");
+                if (book) {
+                    bookDetails.innerHTML = `
+                    <h3>Book</h3>
+                    <strong>Title:</strong> ${book.Title}<br>
+                    <strong>Author:</strong> ${book.Author}<br>
+                    <strong>ISBN:</strong> ${book.ISBN}<br>
+                    <strong>Summary:</strong> ${book.Summary}
+                `;
+                }
+                else {
+                    bookDetails.innerHTML = `<p>Book not found.</p>`;
+                }
+            }
+            else {
+                console.error("Error fetching book:", response.statusText);
+                alert("Book not found.");
+            }
+        }
+        catch (error) {
+            console.error("Error:", error);
+            alert("Error fetching book.");
+        }
+    });
+}
 function addBook(event) {
     return __awaiter(this, void 0, void 0, function* () {
         var _a, _b, _c, _d, _e;
@@ -78,7 +119,7 @@ function addBook(event) {
                 console.log("Book has been added:", data);
                 //alert("Book has been added!");
                 fetchAll();
-                (_e = document.querySelector("form")) === null || _e === void 0 ? void 0 : _e.reset(); // tömmer formuläret
+                (_e = document.querySelector("addbookForm")) === null || _e === void 0 ? void 0 : _e.reset(); // tömmer formuläret
             }
             else {
                 console.error("Something went wrong:", response.statusText);

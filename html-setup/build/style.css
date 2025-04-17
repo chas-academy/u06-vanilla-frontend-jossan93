@@ -6,15 +6,9 @@
   }
   
   body {
-    background-image: url('https://cdn.pixabay.com/photo/2017/11/08/11/25/books-378903_960_720.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    display: flex;
-    justify-content: center;
+    background-color: rgb(37, 37, 37);
     padding: 2rem;
   }
-  
   
   .container {
     display: flex;
@@ -91,13 +85,3 @@
     text-align: center;
   }
 
-  @media (max-width: 768px) {
-    body {
-      padding: 1rem;
-    }
-  
-    section {
-      padding: 1rem;
-    }
-  }
-  

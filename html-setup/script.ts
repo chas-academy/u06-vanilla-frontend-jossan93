@@ -1,8 +1,9 @@
 window.addEventListener("DOMContentLoaded", () => {
     document.getElementById("booklistBtn")?.addEventListener("click", fetchAll);
-    document.querySelector("form")?.addEventListener("submit", addBook);
+    document.querySelector("addbookForm")?.addEventListener("submit", addBook);
     document.getElementById("updateForm")?.addEventListener("submit", updatebook);
     document.getElementById("deleteForm")?.addEventListener("submit", deletebook);
+    document.getElementById("getbookidForm")?.addEventListener("submit", getbookbyid);
   });  
 
 async function fetchAll() {
@@ -44,6 +45,47 @@ function renderBooks(books: any[]) {
     });
 }
 
+async function getbookbyid(event:Event) {
+    event.preventDefault();
+
+    const id = (document.getElementById("getbookByID") as HTMLInputElement).value;
+    const getbookid_url = `https://u05-restful-api-jossan93.onrender.com/api/books/${id}`;
+
+    console.log("Fetching book with ID:", id);
+
+    try {
+        // Skicka GET-begäran till API:t
+        const response = await fetch(getbookid_url);
+
+        // Kontrollera om svar från API är okej
+        if (response.ok) {
+            // Läs data som bok
+            const book = await response.json();
+            console.log("Book fetched:", book);  // Logga den hämtade boken
+
+            // Visa bokdetaljer på sidan
+            const bookDetails = document.getElementById("bookDetails") as HTMLElement;
+            if (book) {
+                bookDetails.innerHTML = `
+                    <h3>Book</h3>
+                    <strong>Title:</strong> ${book.Title}<br>
+                    <strong>Author:</strong> ${book.Author}<br>
+                    <strong>ISBN:</strong> ${book.ISBN}<br>
+                    <strong>Summary:</strong> ${book.Summary}
+                `;
+            } else {
+                bookDetails.innerHTML = `<p>Book not found.</p>`;
+            }
+        } else {
+            console.error("Error fetching book:", response.statusText);
+            alert("Book not found.");
+        }
+    } catch (error) {
+        console.error("Error:", error);
+        alert("Error fetching book.");
+    }
+}
+
 async function addBook(event: Event) {
     event.preventDefault(); // Stoppar sidans omladdning
     const add_url = "https://u05-restful-api-jossan93.onrender.com/api/books/createBook";
@@ -69,7 +111,7 @@ async function addBook(event: Event) {
             console.log("Book has been added:", data);
             //alert("Book has been added!");
             fetchAll();
-            document.querySelector("form")?.reset(); // tömmer formuläret
+            document.querySelector("addbookForm")?.reset(); // tömmer formuläret
         } else {
             console.error("Something went wrong:", response.statusText);
             alert("Error adding book");

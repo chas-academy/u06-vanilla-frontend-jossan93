@@ -9,52 +9,62 @@
 </head>
 <body>
     <div class="container">
-    <section id="bookListSection">
-        <h1>Welcome to book list</h1>
-        <button id="booklistBtn" type="button">Get all the books</button>
-        <ul id="bookList"></ul>
-    </section>
+        <section id="bookListSection">
+            <h1>Welcome to book list</h1>
+            <button id="booklistBtn" type="button">Get all the books</button>
+            <ul id="bookList"></ul>
+        </section>
 
-    <section id="addSection">
-        <h2>Add a book to the book list</h2>
-        <form>
-            <label for="Title">Title</label>
-            <input type="text" id="addTitle" name="addTitle">
-            <label for="Author">Author</label>
-            <input type="text" id="addAuthor" name="addAuthor">
-            <label for="ISBN">ISBN</label>
-            <input type="text" id="addISBN" name="addISBN">
-            <label for="Summary">Summary</label>
-            <input type="text" id="addSummary" name="addSummary">
-            <button type="submit">Add a book!</button>
-        </form>
-    </section>
+        <section id="getbookByIDSection">
+            <h2>Get a book by ID</h2>
+            <div id="bookDetails"></div>
+            <form id="getbookidForm">
+                <label for="ID">ID</label>
+                <input type="text" id="getbookByID" name="getbookByID">
+                <button type="submit">Get Book</button>
+            </form>
+        </section>
 
-    <section id="updateSection">
-        <h2>Update a book</h2>
-        <form id="updateForm">
-            <label for="id">ID</label>
-            <input type="text" id="updateID" name="updateID" required>
-            <label for="Title">Title</label>
-            <input type="text" id="updateTitle" name="updateTitle">
-            <label for="Author">Author</label>
-            <input type="text" id="updateAuthor" name="updateAuthor">
-            <label for="ISBN">ISBN</label>
-            <input type="text" id="updateISBN" name="updateISBN">
-            <label for="Summary">Summary</label>
-            <input type="text" id="updateSummary" name="updateSummary">
-            <button type="submit">Update book</button>
-        </form>
-    </section>
+        <section id="addSection">
+            <h2>Add a book to the book list</h2>
+            <form id="addbookForm">
+                <label for="Title">Title</label>
+                <input type="text" id="addTitle" name="addTitle">
+                <label for="Author">Author</label>
+                <input type="text" id="addAuthor" name="addAuthor">
+                <label for="ISBN">ISBN</label>
+                <input type="text" id="addISBN" name="addISBN">
+                <label for="Summary">Summary</label>
+                <input type="text" id="addSummary" name="addSummary">
+                <button type="submit">Add a book!</button>
+            </form>
+        </section>
 
-    <section id="deleteSection">
-        <h2>Delete a book</h2>
-        <form id="deleteForm">
-            <label for="id">ID</label>
-            <input type="text" id="deleteID" name="deleteID" required>
-            <button type="submit">Delete book</button>
-        </form>
-    </section>
+        <section id="updateSection">
+            <h2>Update a book</h2>
+            <form id="updateForm">
+                <label for="id">ID</label>
+                <input type="text" id="updateID" name="updateID" required>
+                <label for="Title">Title</label>
+                <input type="text" id="updateTitle" name="updateTitle">
+                <label for="Author">Author</label>
+                <input type="text" id="updateAuthor" name="updateAuthor">
+                <label for="ISBN">ISBN</label>
+                <input type="text" id="updateISBN" name="updateISBN">
+                <label for="Summary">Summary</label>
+                <input type="text" id="updateSummary" name="updateSummary">
+                <button type="submit">Update book</button>
+            </form>
+        </section>
+
+        <section id="deleteSection">
+            <h2>Delete a book</h2>
+            <form id="deleteForm">
+                <label for="id">ID</label>
+                <input type="text" id="deleteID" name="deleteID" required>
+                <button type="submit">Delete book</button>
+            </form>
+        </section>
     </div>
 </body>
 </html>
